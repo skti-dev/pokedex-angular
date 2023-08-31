@@ -3,9 +3,14 @@
 $padding: rem-calc(20);
 
 :host {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .loading {
+    color: var(--white);
+    margin-top: rem-calc(20);
+  }
 
   .error {
     margin-top: $padding;

@@ -42,6 +42,7 @@ export class DetailsComponent implements OnInit {
       error: err => {
         console.error(err)
         this.hasError = true
+        this.isLoading = false
       }
     }) 
   }

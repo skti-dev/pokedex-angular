@@ -14,6 +14,7 @@ export class PokeListComponent implements OnInit {
 
   public pokemonList!: Array<PokemonList>
   private setPokemonList!: Array<PokemonList>
+  public isLoading:boolean = true
   public hasError:boolean = false
 
   ngOnInit(): void {
@@ -22,10 +23,13 @@ export class PokeListComponent implements OnInit {
         if(this.hasError) this.hasError = false
         this.setPokemonList = res.results
         this.pokemonList = this.setPokemonList
+
+        this.isLoading = false
       },
       error: err => {
         console.error(err)
         this.hasError = true
+        this.isLoading = false
       }
     })
   }

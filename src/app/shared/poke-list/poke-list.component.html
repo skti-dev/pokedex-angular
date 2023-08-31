@@ -1,6 +1,8 @@
 <poke-search (emitSearch)="search($event)"></poke-search>
 
-<section *ngIf="!hasError">
+<span *ngIf="isLoading" class="loading"> Carregando... </span>
+
+<section *ngIf="!isLoading">
   <ng-template ngFor let-pokemon [ngForOf]="pokemonList">
     <a [routerLink]="['details', pokemon.status?.id]" class="pokemon">
       <section class="pokemon__status">
