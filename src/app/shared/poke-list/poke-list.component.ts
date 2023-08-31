@@ -14,11 +14,19 @@ export class PokeListComponent implements OnInit {
 
   public pokemonList!: Array<PokemonList>
   private setPokemonList!: Array<PokemonList>
+  public hasError:boolean = false
 
   ngOnInit(): void {
-    this.pokeApiService.listAllPokemons.subscribe(res => {
-      this.setPokemonList = res.results
-      this.pokemonList = this.setPokemonList
+    this.pokeApiService.listAllPokemons.subscribe({
+      next: res => {
+        if(this.hasError) this.hasError = false
+        this.setPokemonList = res.results
+        this.pokemonList = this.setPokemonList
+      },
+      error: err => {
+        console.error(err)
+        this.hasError = true
+      }
     })
   }
 
@@ -35,7 +43,7 @@ export class PokeListComponent implements OnInit {
     }
 
     const filterByType = this.setPokemonList.filter(pokemon => {
-      const types = pokemon.status?.types.map(({ type: { name } }) => name.toLocaleLowerCase())
+      const types = pokemon.status?.types?.map(({ type: { name } }) => name.toLocaleLowerCase())
       let hasValue = false
       types?.forEach(name => {
         if(!hasValue) {

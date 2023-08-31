@@ -1,0 +1,24 @@
+@import './rem-calc.scss';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: rem-calc(20);
+  border-radius: rem-calc(10);
+
+  margin-top: rem-calc(20);
+
+  &__primary {
+    color: var(--white);
+    background-color: var(--primary-color);
+  }
+
+  &__secondary {
+    color: var(--white);
+    background-color: var(--secondary-color);
+  }
+}

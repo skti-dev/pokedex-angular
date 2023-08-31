@@ -1,23 +1,30 @@
 <poke-search (emitSearch)="search($event)"></poke-search>
 
-<section>
+<section *ngIf="!hasError">
   <ng-template ngFor let-pokemon [ngForOf]="pokemonList">
-  <a [routerLink]="['details', pokemon.status?.id]" class="pokemon">
-    <section class="pokemon__status">
-      <h2>
-        #{{ pokemon.status?.id }} {{ pokemon.name }}
-      </h2>
-  
-      <ul>
-        <li *ngFor="let value of pokemon.status?.types">
-          {{ value.type.name }}
-        </li>
-      </ul>
-    </section>
-  
-    <section class="pokemon__image">
-      <img [src]="pokemon.status?.sprites?.other?.dream_world?.front_default" [alt]="pokemon.name" />
-    </section>
-  </a>
-</ng-template>
+    <a [routerLink]="['details', pokemon.status?.id]" class="pokemon">
+      <section class="pokemon__status">
+        <h2>
+          #{{ pokemon.status?.id }} {{ pokemon.name }}
+        </h2>
+    
+        <ul>
+          <li *ngFor="let value of pokemon.status?.types">
+            {{ value.type.name }}
+          </li>
+        </ul>
+      </section>
+    
+      <section class="pokemon__image">
+        <img [src]="pokemon.status?.sprites?.other?.dream_world?.front_default" [alt]="pokemon.name" />
+      </section>
+    </a>
+  </ng-template>
 </section>
+
+<img 
+  *ngIf="hasError"
+  class="error" 
+  src="assets/error.png" 
+  alt="Imagem representando mensagem de erro: Texto 'Pokedex parou de funcionar' com o Pokémon Gastly ao lado." 
+/>

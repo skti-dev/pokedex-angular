@@ -1,6 +1,7 @@
 @import '../../../config-scss/rem-calc.scss';
 
 :host {
+  width: 100%;
   form {
     display: flex;
     justify-content: space-between;

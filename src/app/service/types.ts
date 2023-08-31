@@ -14,15 +14,17 @@ type PokemonStatsProps = {
 
 export type PokemonDetails = {
   id: number
-  types: Array<PokemonTypeProps>
-  stats: Array<PokemonStatsProps>
-  sprites: {
-    other: {
-      dream_world: {
+  name?: string
+  types?: Array<PokemonTypeProps>
+  stats?: Array<PokemonStatsProps>
+  sprites?: {
+    other?: {
+      dream_world?: {
         front_default: string
       }
     }
   }
+  names?: Array<{ name: string }>
 }
 
 export type PokemonList = {

@@ -3,7 +3,17 @@
 $padding: rem-calc(20);
 
 :host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  .error {
+    margin-top: $padding;
+    width: 90%;
+  }
+
   > section {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -19,6 +29,7 @@ $padding: rem-calc(20);
       height: rem-calc(150);
       position: relative;
       box-sizing: border-box;
+      color: var(--primary-color);
 
       &__status {
         h2 {

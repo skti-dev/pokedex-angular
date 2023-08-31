@@ -1,1 +1,51 @@
-<p>details works!</p>
+<poke-header [hasHomeButton]="true"></poke-header>
+
+<main>
+  <ng-template [ngIf]="isLoading">
+    <span class="loading">
+      Carregando...
+    </span>
+  </ng-template>
+
+  <ng-template [ngIf]="!isLoading">
+    <section class="pokemon__names">
+      <h1 class="slideInLeft"> {{ pokemon.name }} </h1>
+      <h2 class="slideInRight"> {{ pokemon.names?.[0]?.name }} </h2>
+    </section>
+
+    <section class="pokemon__status">
+      <img 
+        [src]="pokemon.sprites?.other?.dream_world?.front_default" 
+        [alt]="pokemon.name"
+        class="slideInDown"
+      />
+  
+      <article class="pokemon__status__statistics fadeIn">
+        <section>
+          <h3> Estatísticas </h3>
+  
+          <ol>
+            <li *ngFor="let value of pokemon.stats">
+              {{ value.stat.name }}
+  
+              <strong>
+                {{ value.base_stat }}
+              </strong>
+            </li>
+          </ol>
+        </section>
+  
+        <a [routerLink]="'/'" class="btn btn__secondary">
+          Voltar
+        </a>
+      </article>
+    </section>
+  </ng-template>
+
+  <img 
+    *ngIf="hasError"
+    class="error" 
+    src="assets/error.png" 
+    alt="Imagem representando mensagem de erro: Texto 'Pokedex parou de funcionar' com o Pokémon Gastly ao lado." 
+  />
+</main>
